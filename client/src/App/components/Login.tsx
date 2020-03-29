@@ -1,34 +1,36 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import colors from '../../styles/colors';
+import loginPicture from '../../Shared/assets/images/login-picture.jpg';
+
 const StyledAuthenticationWrapper = styled.div`
-    height: 100%;
+    height: 80%;
+    width: 60%;
     display: flex;
+    background-color: ${colors.foregroundColor};
 `;
 
 const StyledSideContainer = styled.div`
     width: 50%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 `;
 
 const StyledPoistioningBox = styled.div`
     height: 80%;
-    width: 80%;
+    width: 100%;
     padding: 10% 15%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-`;
-
-const StyledCenteredItems = styled.div`
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
 `;
 
 const StyledWelcomeText = styled.div`
@@ -57,7 +59,7 @@ const StyledLabel = styled.label`
 `;
 
 const StyledInput = styled.input`
-    width: 100%;
+    width: calc(100% - 30px);
     height: 35px;
     border: 1px solid grey;
     border-radius: 3px;
@@ -102,15 +104,25 @@ const StyledRememberInputContainer = styled.div`
     }
 `;
 
+const StyledLogo = styled.div`
+    color: ${colors.colorAccent1};
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+`;
+
 export const Login: React.FunctionComponent<{}> = () => {
     return (
         <StyledAuthenticationWrapper>
             <StyledSideContainer>
                 <StyledPoistioningBox>
-                    <StyledWelcomeText>
-                        <span className="title">Welcome,</span>
-                        <span>login to your account.</span>
-                    </StyledWelcomeText>
+                    <div>
+                        <StyledLogo>petsocial</StyledLogo>
+                        <StyledWelcomeText>
+                            <span className="title">Welcome,</span>
+                            <span>login to your account.</span>
+                        </StyledWelcomeText>
+                    </div>
                     <StyledLogin>
                         <div>
                             <StyledLabel>Username</StyledLabel>
@@ -127,17 +139,17 @@ export const Login: React.FunctionComponent<{}> = () => {
                         <StyledButton className="highlighted">
                             Login
                         </StyledButton>
-                    </StyledLogin>
-                    <StyledCenteredItems>
-                        <StyledLabel>-- or --</StyledLabel>
                         <StyledButton>Sign up</StyledButton>
-                    </StyledCenteredItems>
+                    </StyledLogin>
+                    <div>
+                        By signing up, you agree to Petsocial's
+                        <a href="#">Terms and Conditions</a> &
+                        <a href="#">Privacy Policy</a>
+                    </div>
                 </StyledPoistioningBox>
             </StyledSideContainer>
             <StyledSideContainer>
-                <StyledPoistioningBox>
-                    <img src="" alt="" />
-                </StyledPoistioningBox>
+                <img src={loginPicture} alt="" />
             </StyledSideContainer>
         </StyledAuthenticationWrapper>
     );
